@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/style.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header>
+      {% set path = "images/madoka.png" %}
+      {% set image = resize_image(path=path, width=28, op="fit_width", quality=50, format="webp") %}
+      <div class="bio">
+        <img height="112px" width="112px" src="{{ image.url }}" alt="highly compressed image of madoka kaname from madoka magica">
+        <a href="/">
+          nyadiia
+        </a>
+      </div>
+      <nav class="sidebar">
+        <div class="nav-section">
+          <span class="nav-title">Pages</span>
+          <ul>
+            {% for link in config.extra.pages %}
+            <li><a href="{{ link.url }}">{{ link.name }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="nav-section">
+          <span class="nav-title">
+            Socials
+          </span>
+          <ul>
+            {% for link in config.extra.socials %}
+              <li><a href="{{ link.url }}">{{ link.name }}</a></li>
+            {% endfor %}
+          </ul> 
+        </div>
+      </nav>
+      <div class="commit">
+        <p>commit</p>
+        {%- include "partials/commit.html" -%}
+      </div>
+    </header>
+    <div class="content">
+      <main>
+        <article>
+          {% block main_content %}
+            Nothing here?!
+          {% endblock main_content %}
+        </article>
+      </main>  
+      {%- include "partials/footer.html" -%}
+    </div> 
+  </div>
+</body>
+</html>

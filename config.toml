@@ -1,0 +1,30 @@
+# The URL the site will be built for
+base_url = "https://bunn.moe"
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = false
+
+minify_html = true
+
+[markdown]
+# Whether to do syntax highlighting
+# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+highlight_code = false
+
+[extra]
+repo = "https://github.com/nyadiia/bunn.moe"
+
+pages = [
+    { name = "Blog", url = "/blog/" },
+    { name = "Contact", url = "/contact/" },
+    { name = "Links", url = "/links/" },
+    { name = "People", url = "/people/" },
+]
+
+socials = [
+    { name = "Github", url = "https://github.com/nyadiia", icon = "github" },
+    { name = "Bluesky", url = "https://bsky.app/profile/bunn.moe", icon = "bluesky" }
+]

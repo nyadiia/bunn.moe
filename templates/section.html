@@ -1,0 +1,8 @@
+{% extends "index.html" %}
+
+{% block main_content %}
+    <h1 class="article-title">{{ section.title | safe }}</h1>
+    <section class="body">
+        {{ section.content | safe }}
+    </section>
+{% endblock main_content %}

@@ -1,0 +1,4 @@
+public/
+.direnv/
+static/processed_images/
+result
