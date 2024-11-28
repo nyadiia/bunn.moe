@@ -2,7 +2,7 @@
 @use '_colors.scss';
 
 $border-radius: 0.5rem;
-$layout-width: 45rem;
+$layout-width: 768px;
 $sidebar-width: $layout-width * 0.2;
 
 $primary-container: oklch(from var(--md-sys-color-primary-container) l c h);
@@ -137,7 +137,26 @@ footer > * {
 main,
 footer {
     background-color: $surface;
-    flex-grow: 1;
+    flex-grow: 0;
+}
+
+#i-404 {
+    display: flex;
+    margin: 3rem 0;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    a {
+        color: $on-surface;
+        text-decoration: none;
+    }
+    svg {
+        fill: currentColor;
+    }
+    p {
+        width: 8rem;
+    }
 }
 
 main {
