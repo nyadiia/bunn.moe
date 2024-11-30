@@ -15,6 +15,7 @@ minify_html = true
 highlight_code = false
 
 [extra]
+name = "nyadiia"
 repo = "https://github.com/nyadiia/bunn.moe"
 
 pages = [

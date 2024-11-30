@@ -1,0 +1,67 @@
+@import "_variables.scss";
+
+.nav-title {
+    font-weight: bold;
+    background: linear-gradient(to right in oklch, var(--secondary-container), var(--inverse-primary));
+    padding: 0.4rem;
+    display: flex;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+}
+
+.bio {
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    a {
+        margin-top: 1rem;
+        font-weight: bolder;
+        font-size: 1.2rem;
+        padding: 0.4rem 2rem 0.6rem;
+        border-radius: var(--border-radius);
+        color: var(--on-primary) !important;
+        background: linear-gradient(-30deg in oklch, var(--primary-fixed), #ff0066);
+    }
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    
+    ul {
+        list-style: "✧ " inside;
+        margin: 0.4rem;
+        line-height: 1.3rem;
+        li {     
+            padding: 0 0 0.3rem;
+        }
+    }
+}
+
+@media screen and (max-width: $layout-width) {
+    header {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .bio {
+        order: 1;
+        align-self: center;
+    }
+    .sidebar {
+        order: 3;
+        flex-direction: row;
+        flex-grow: 2;
+    }
+    .nav-section {
+        flex-grow: 1;
+
+        &:last-child > .nav-title {
+            border-radius: 0 var(--border-radius) 0 0;
+        }
+    }
+}

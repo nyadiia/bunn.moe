@@ -1,0 +1,30 @@
+<header>
+    {% set path = "images/madoka.png" %}
+    {% set image = resize_image(path=path, width=28, op="fit_width", quality=50, format="webp") %}
+    <div class="bio">
+      <img height="112px" width="112px" src="{{ image.url }}" alt="highly compressed image of madoka kaname from madoka magica">
+      <a href="/" rel="me">
+        {{ config.extra.name | safe }}
+      </a>
+    </div>
+    <nav class="sidebar">
+      <div class="nav-section">
+        <span class="nav-title">Pages</span>
+        <ul>
+          {% for link in config.extra.pages %}
+          <li><a href="{{ link.url }}">{{ link.name }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="nav-section">
+        <span class="nav-title">
+          Socials
+        </span>
+        <ul>
+          {% for link in config.extra.socials %}
+            <li><a href="{{ link.url }}" rel="me external">{{ link.name }}</a></li>
+          {% endfor %}
+        </ul> 
+      </div>
+    </nav>
+  </header>

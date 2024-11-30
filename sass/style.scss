@@ -1,23 +1,11 @@
-@use '_reset';
+@use '_reset.scss';
 @use '_colors.scss';
+@use '_header.scss';
+@use '_footer.scss';
+@use '_i-404.scss';
 
-$border-radius: 0.5rem;
-$layout-width: 768px;
-$sidebar-width: $layout-width * 0.2;
-
-$primary-container: oklch(from var(--md-sys-color-primary-container) l c h);
-$surface-tint: oklch(from var(--md-sys-color-surface-tint) l c h);
-$primary: oklch(from var(--md-sys-color-primary) l c h);
-$inverse-primary: oklch(from var(--md-sys-color-inverse-primary) l c h);
-$primary-fixed: oklch(from var(--md-sys-color-primary-fixed) l c h);
-$secondary-container: oklch(from var(--md-sys-color-surface-container) l c h);
-$secondary: oklch(from var(--md-sys-color-secondary) l c h);
-$secondary-fixed: oklch(from var(--md-sys-color-secondary-fixed) l c h);
-$tertiary: oklch(from var(--md-sys-color-tertiary) l c h);
-$surface: oklch(from var(--md-sys-color-surface) l c h);
-$surface-dim: oklch(from var(--md-sys-color-surface-container-high) l c h);
-$on-surface: oklch(from var(--md-sys-color-on-surface) l c h);
-$on-primary: oklch(from var(--md-sys-color-on-primary) l c h);
+@import '_variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
 
 @font-face {
     font-family: Azuki;
@@ -28,18 +16,19 @@ $on-primary: oklch(from var(--md-sys-color-on-primary) l c h);
 }
 
 :root {
-    font-family: system-ui, sans-serif;
+    font-family: "Sour Gummy", system-ui, sans-serif;
     font-size: 14px;
-    color: $on-surface;
+    color: var(--on-surface);
+    --border-radius: 0.5rem;
 }
 
 h1 {
     font-size: 3rem;
-}
 
-h1.article-title {
-    font-weight: bold;
-    padding-bottom: 1rem;
+    &.article-title {
+        font-weight: bold;
+        padding-bottom: 1rem;
+    }
 }
 
 h2 {
@@ -54,21 +43,19 @@ h4 {
     font-size: 1.25rem;
 }
 
-h1,
-h2,
-h3,
-h4 a{
-    list-style-position: outside;
-}
 p {
     line-height: 1.25rem;
     margin: 0.75rem 0;
 }
 
-$ext_link: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><path stroke="%23000" fill="none" stroke-width="10" d="M43 35H5v60h60V57M45 5v10l10 10-30 30 20 20 30-30 10 10h10V5z"/></svg>') center no-repeat;
+$ext_link_svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><path stroke="%23000" fill="none" stroke-width="10" d="M43 35H5v60h60V57M45 5v10l10 10-30 30 20 20 30-30 10 10h10V5z"/></svg>') center no-repeat;
 
 a {
-    color: $primary;
+    color: var(--primary);
+
+    &:visited {
+        color: var(--secondary);
+    }
 
     &[href^="http://"]:not([href^="http://bunn.moe"]):not(.noext)::after,
     &[href^="https://"]:not([href^="https://bunn.moe"]):not(.noext)::after,
@@ -78,32 +65,21 @@ a {
         width: 0.75rem;
         height: 0.75rem;
         margin-left: 0.2rem;
-        mask: $ext_link;
-        -webkit-mask: $ext_link;
+        mask: $ext_link_svg;
+        -webkit-mask: $ext_link_svg;
         background-color: currentColor;
         mask-size: contain;
         -webkit-mask-size: contain;
     }
 }
 
-a:visited {
-    color: $secondary;
-}
-
 .container {
-    border-radius: $border-radius;
+    border-radius: var(--border-radius);
     display: flex;
     flex-direction: row;
     margin: 3rem auto;
     width: $layout-width;
-
-    // width: 100%;
-    background-color: $surface-dim;
-}
-
-footer {
-    display: flex;
-    flex-direction: column;
+    background-color: var(--surface-dim);
 }
 
 .content {
@@ -111,161 +87,31 @@ footer {
     display: flex;
     min-width: 0;
     flex-direction: column;
-}
-
-.content > main {
-    flex-grow: 2;
-}
-
-.content > footer {
-    max-height: min-content;
+    & > main {
+        flex-grow: 2;
+    }
 }
 
 article {
     margin: 1.5rem;
 }
 
-footer > * {
-    margin: 0.25rem 1.5rem;
-    &:first-child {
-        margin-top: 1rem;
-    }
-    &:last-child {
-        margin-bottom: 1rem;
-    }
-}
-main,
-footer {
-    background-color: $surface;
-    flex-grow: 0;
-}
-
-#i-404 {
-    display: flex;
-    margin: 3rem 0;
-    flex-direction: column;
-    justify-items: center;
-    align-items: center;
-    text-align: center;
-    a {
-        color: $on-surface;
-        text-decoration: none;
-    }
-    svg {
-        fill: currentColor;
-    }
-    p {
-        width: 8rem;
-    }
-}
-
 main {
-    border-radius: $border-radius $border-radius 0 0;
-}
-
-footer {
-    border-radius: 0 0 $border-radius $border-radius;
-}
-
-.nav-title {
-    font-weight: bold;
-    background: linear-gradient(to right, $secondary-container, $inverse-primary);
-    padding: 0.2rem;
-    display: flex;
-}
-
-header {
-    display: flex;
-    flex-direction: column;
-
-    .bio {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        a {
-            font-weight: bolder;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            padding: 0.5rem 2rem;
-            border-radius: $border-radius;
-            color: $on-primary;
-            background: linear-gradient(-30deg in oklch, $primary-fixed, #FF0066);
-        }
-    }
-
-    img {
-        display: flex;
-        margin: 1rem 1rem;
-    }
-}
-
-.sidebar {
-    display: flex;
-    flex-shrink: 2;
-    // width: $sidebar-width;
-    flex-direction: column;
-
-    ul {
-        list-style: "✧ " inside;
-        padding: 0.4rem 0.3rem 0.6rem;
-        line-height: 1.3rem;
-        li {     
-            padding: 0.3rem 0;
-        }
-    }
-}
-
-.commit {
-    font-size: 0.8rem;
-    padding: 0.3rem;
-
-    p {
-        color: $surface-tint;
-        line-height: 1rem;
-        padding: 0;
-        margin: 0;
-    }
-
-    a {
-        color: $primary;
-    }
+    background-color: var(--surface);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    flex-grow: 0;
 }
 
 @media screen and (max-width: $layout-width) {
     main > article {
-        border-radius: $border-radius $border-radius 0 0;
-    }
-
-    .nav-section:last-child > .nav-title{
-        border-radius: 0 $border-radius 0 0;
+        border-radius: var(--border-radius) var(--border-radius) 0 0;
     }
 
     .container {
         max-width: 95%;
         flex-direction: column;
     }
-    header {
-        flex-direction: row;
-        flex-wrap: wrap;
-        .bio {
-            order: 1;
-            align-self: center;
-        }
-        .commit {
-            order: 2;
-            align-self: flex-end;
-            flex-grow: 1;
-        }
-        .sidebar {
-            order: 3;
-            flex-direction: row;
-            flex-grow: 2;
-        }
-        .nav-section {
-            flex-grow: 1;
-        }
-    }
+    
 }
 
 @media (prefers-color-scheme: dark) {
