@@ -1,4 +1,4 @@
-@import "_variables.scss";
+@use "_variables.scss" as var;
 
 .nav-title {
     font-weight: bold;
@@ -42,7 +42,7 @@ header {
     }
 }
 
-@media screen and (max-width: $layout-width) {
+@media screen and (max-width: var.$layout-width) {
     header {
         flex-direction: row;
         flex-wrap: wrap;

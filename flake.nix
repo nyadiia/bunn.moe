@@ -17,9 +17,7 @@
     flake-utils.lib.eachDefaultSystem (
       system:
       let
-        pkgs = nixpkgs.legacyPackages.${system}.appendOverlays [
-          mkPnpmPackage.overlays.default
-        ];
+        pkgs = nixpkgs.legacyPackages.${system};
       in
       {
         devShells = with pkgs; {
@@ -28,6 +26,7 @@
               zola
               lightningcss
               sass
+              woff2
             ];
           };
         };
@@ -60,7 +59,7 @@
               input="$out/style.css"
               output="temp_output.css"
 
-              lightningcss --bundle -m -t '>= 0.25%' $input > $output
+              lightningcss --bundle -m -t ">= 0.25%" $input > $output
 
               # Completely optional logging
               size1=$(stat --format=%s "$input")
@@ -72,7 +71,7 @@
               difference=$(( size2 - size1 ))
               percentage_difference=$(awk "BEGIN {printf \"%+ .2f\", ($difference / $size1) * 100}")
 
-              echo "$size1_kib KiB → $size2_kib KiB ($percentage_difference%)
+              echo "$size1_kib KiB → $size2_kib KiB ($percentage_difference%)"
 
               mv "$output" "$input"
             '';

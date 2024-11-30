@@ -3,16 +3,25 @@
 @use '_header.scss';
 @use '_footer.scss';
 @use '_i-404.scss';
+@use '_variables.scss' as var;
 
-@import '_variables.scss';
-@import url('https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+// @font-face {
+//     font-family: Azuki;
+//     font-style: normal;
+//     font-display: swap;
+//     src: 
+//         local("azukifontP"),
+//         url("fonts/azukiP.woff2") format("woff2"),
+//         url("fonts/azukiP.ttf") format("truetype");
+// }
 
 @font-face {
-    font-family: Azuki;
-    src: 
-        local("azukifontP"),
-        url("fonts/azukiP.woff2"),
-        url("fonts/azukiP.ttf"),
+    font-family: "Sour Gummy";
+    font-style: normal;
+    font-display: swap;
+    font-weight: 300;
+    src: url("fonts/SourGummy-Variable.woff2") format("woff2"),
+        url("fonts/SourGummy-Variable.ttf") format("truetype");
 }
 
 :root {
@@ -78,7 +87,7 @@ a {
     display: flex;
     flex-direction: row;
     margin: 3rem auto;
-    width: $layout-width;
+    width: var.$layout-width;
     background-color: var(--surface-dim);
 }
 
@@ -102,7 +111,7 @@ main {
     flex-grow: 0;
 }
 
-@media screen and (max-width: $layout-width) {
+@media screen and (max-width: var.$layout-width) {
     main > article {
         border-radius: var(--border-radius) var(--border-radius) 0 0;
     }
