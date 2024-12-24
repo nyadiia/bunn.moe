@@ -26,13 +26,13 @@
 
 :root {
     font-family: "Sour Gummy", system-ui, sans-serif;
-    font-size: 14px;
+    font-size: 1em;
     color: var(--on-surface);
     --border-radius: 0.5rem;
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: 3em;
 
     &.article-title {
         font-weight: bold;
@@ -41,19 +41,19 @@ h1 {
 }
 
 h2 {
-    font-size: 2rem;
+    font-size: 2em;
 }
 
 h3 {
-    font-size: 1.5rem;
+    font-size: 1.5em;
 }
 
 h4 {
-    font-size: 1.25rem;
+    font-size: 1.25em;
 }
 
 p {
-    line-height: 1.25rem;
+    line-height: 1.25em;
     margin: 0.75rem 0;
 }
 

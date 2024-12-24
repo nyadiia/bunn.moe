@@ -20,7 +20,7 @@ header {
     a {
         margin-top: 1rem;
         font-weight: bolder;
-        font-size: 1.2rem;
+        font-size: 1.2em;
         padding: 0.4rem 2rem 0.6rem;
         border-radius: var(--border-radius);
         color: var(--on-primary) !important;
@@ -35,7 +35,7 @@ header {
     ul {
         list-style: "✧ " inside;
         margin: 0.4rem;
-        line-height: 1.3rem;
+        line-height: 1.3em;
         li {     
             padding: 0 0 0.3rem;
         }
